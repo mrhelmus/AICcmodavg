@@ -1,53 +1,116 @@
-\name{modavgpred}
+\name{modavgPred}
 \Rdversion{1.1}
-\alias{modavgpred}
-\alias{modavgpred.glm}
-\alias{modavgpred.gls}
-\alias{modavgpred.lme}
-\alias{modavgpred.mer}
-\alias{modavgpred.merMod}
-\alias{modavgpred.rlm}
-\alias{modavgpred.unmarked}
-\alias{print.modavgpred}
+\alias{modavgPred}
+\alias{modavgPred.default}
+\alias{modavgPred.AICaov.lm}
+\alias{modavgPred.AICglm.lm}
+\alias{modavgPred.AICgls}
+\alias{modavgPred.AIClm}
+\alias{modavgPred.AIClme}
+\alias{modavgPred.AICglmerMod}
+\alias{modavgPred.AIClmerMod}
+\alias{modavgPred.AICmer}
+\alias{modavgPred.AICrlm.lm}
+\alias{modavgPred.AICunmarkedFitOccu}
+\alias{modavgPred.AICunmarkedFitColExt}
+\alias{modavgPred.AICunmarkedFitOccuRN}
+\alias{modavgPred.AICunmarkedFitPCount}
+\alias{modavgPred.AICunmarkedFitPCO}
+\alias{modavgPred.AICunmarkedFitDS}
+\alias{modavgPred.AICunmarkedFitGDS}
+\alias{modavgPred.AICunmarkedFitOccuFP}
+\alias{modavgPred.AICunmarkedFitMPois}
+\alias{modavgPred.AICunmarkedFitGMM}
+\alias{modavgPred.AICunmarkedFitGPC}
+\alias{print.modavgPred}
 \title{
 Compute Model-averaged Predictions
 }
 \description{
 This function computes the model-averaged predictions and unconditional
 standard errors based on the entire candidate model set.  The function
-is currently implemented for 'glm', 'gls', 'lm', 'lme', 'mer', and
-'merMod' object classes that are stored in a list as well as various
-models of 'unmarkedFit' classes.
+is currently implemented for \code{glm}, \code{gls}, \code{lm},
+\code{lme}, \code{mer}, \code{merMod}, \code{rlm} object classes that
+are stored in a list as well as various models of \code{unmarkedFit}
+classes.
 }
 \usage{
-modavgpred(cand.set, modnames, newdata, type = "response", c.hat = 1,
-           gamdisp = NULL, second.ord = TRUE, nobs = NULL,
-           uncond.se = "revised", parm.type = NULL) 
+modavgPred(cand.set, modnames = NULL, newdata, second.ord = TRUE,
+           nobs = NULL, uncond.se = "revised", \dots)
 
-modavgpred.glm(cand.set, modnames, newdata, type = "response",
-               c.hat = 1, gamdisp = NULL, second.ord = TRUE,
-               nobs = NULL, uncond.se = "revised") 
+\method{modavgPred}{AICaov.lm}(cand.set, modnames = NULL, newdata,
+        second.ord = TRUE, nobs = NULL, uncond.se = "revised", \dots) 
 
-modavgpred.gls(cand.set, modnames, newdata, second.ord = TRUE,
-               nobs = NULL, uncond.se = "revised")
+\method{modavgPred}{AICglm.lm}(cand.set, modnames = NULL, newdata,
+        second.ord = TRUE, nobs = NULL, uncond.se = "revised", type =
+        "response", c.hat = 1, gamdisp = NULL, \dots)
 
-modavgpred.lme(cand.set, modnames, newdata, second.ord = TRUE,
-               nobs = NULL, uncond.se = "revised")
+\method{modavgPred}{AIClm}(cand.set, modnames = NULL, newdata,
+        second.ord = TRUE, nobs = NULL, uncond.se = "revised", \dots) 
 
-modavgpred.mer(cand.set, modnames, newdata, type = "response",
-               c.hat = 1, second.ord = TRUE, nobs = NULL,
-               uncond.se = "revised")
+\method{modavgPred}{AICgls}(cand.set, modnames = NULL, newdata,
+        second.ord = TRUE, nobs = NULL, uncond.se = "revised", \dots) 
 
-modavgpred.merMod(cand.set, modnames, newdata, type = "response",
-                  c.hat = 1, second.ord = TRUE, nobs = NULL,
-                  uncond.se = "revised")
+\method{modavgPred}{AIClme}(cand.set, modnames = NULL, newdata,
+        second.ord = TRUE, nobs = NULL, uncond.se = "revised", \dots)
 
-modavgpred.rlm(cand.set, modnames, newdata, second.ord = TRUE,
-               nobs = NULL, uncond.se = "revised")
+\method{modavgPred}{AICmer}(cand.set, modnames = NULL, newdata,
+        second.ord = TRUE, nobs = NULL, uncond.se = "revised", type =
+        "response", c.hat = 1, \dots)
 
-modavgpred.unmarked(cand.set, modnames, newdata, second.ord = TRUE,
-                    type = "response", c.hat = 1, nobs = NULL,
-                    uncond.se = "revised", parm.type = NULL)
+\method{modavgPred}{AICglmerMod}(cand.set, modnames = NULL, newdata,
+        second.ord = TRUE, nobs = NULL, uncond.se = "revised", type =
+        "response", c.hat = 1, \dots)
+
+\method{modavgPred}{AIClmerMod}(cand.set, modnames = NULL, newdata,
+        second.ord = TRUE, nobs = NULL, uncond.se = "revised", \dots)
+
+\method{modavgPred}{AICrlm.lm}(cand.set, modnames = NULL, newdata,
+        second.ord = TRUE, nobs = NULL, uncond.se = "revised", \dots) 
+
+\method{modavgPred}{AICunmarkedFitOccu}(cand.set, modnames = NULL,
+        newdata, second.ord = TRUE, nobs = NULL, uncond.se = "revised",
+        type = "response", c.hat = 1, parm.type = NULL, \dots)
+
+\method{modavgPred}{AICunmarkedFitColExt}(cand.set, modnames = NULL,
+        newdata, second.ord = TRUE, nobs = NULL, uncond.se = "revised",
+        type = "response", c.hat = 1, parm.type = NULL, \dots) 
+
+\method{modavgPred}{AICunmarkedFitOccuRN}(cand.set, modnames = NULL,
+        newdata, second.ord = TRUE, nobs = NULL, uncond.se = "revised",
+        type = "response", c.hat = 1, parm.type = NULL, \dots)
+
+\method{modavgPred}{AICunmarkedFitPCount}(cand.set, modnames = NULL,
+        newdata, second.ord = TRUE, nobs = NULL, uncond.se = "revised",
+        type = "response", c.hat = 1, parm.type = NULL, \dots) 
+
+\method{modavgPred}{AICunmarkedFitPCO}(cand.set, modnames = NULL,
+        newdata, second.ord = TRUE, nobs = NULL, uncond.se = "revised",
+        type = "response", c.hat = 1, parm.type = NULL, \dots)
+
+\method{modavgPred}{AICunmarkedFitDS}(cand.set, modnames = NULL,
+        newdata, second.ord = TRUE, nobs = NULL, uncond.se = "revised",
+        type = "response", c.hat = 1, parm.type = NULL, \dots) 
+
+\method{modavgPred}{AICunmarkedFitGDS}(cand.set, modnames = NULL,
+        newdata, second.ord = TRUE, nobs = NULL, uncond.se = "revised",
+        type = "response", c.hat = 1, parm.type = NULL, \dots)
+
+\method{modavgPred}{AICunmarkedFitOccuFP}(cand.set, modnames = NULL,
+        newdata, second.ord = TRUE, nobs = NULL, uncond.se = "revised",
+        type = "response", c.hat = 1, parm.type = NULL, \dots)
+
+\method{modavgPred}{AICunmarkedFitMPois}(cand.set, modnames = NULL,
+        newdata, second.ord = TRUE, nobs = NULL, uncond.se = "revised",
+        type = "response", c.hat = 1, parm.type = NULL, \dots)
+
+\method{modavgPred}{AICunmarkedFitGMM}(cand.set, modnames = NULL,
+        newdata, second.ord = TRUE, nobs = NULL, uncond.se = "revised",
+        type = "response", c.hat = 1, parm.type = NULL, \dots)
+
+\method{modavgPred}{AICunmarkedFitGPC}(cand.set, modnames = NULL,
+        newdata, second.ord = TRUE, nobs = NULL, uncond.se = "revised",
+        type = "response", c.hat = 1, parm.type = NULL, \dots)
 
 }
 
@@ -58,114 +121,127 @@ a list storing each of the models in the candidate model set.
 }
   \item{modnames}{
 a character vector of model names to facilitate the identification of
-each model in the model selection table.
+each model in the model selection table. If \code{NULL}, the function
+uses the names in the cand.set list of candidate models. If no names
+appear in the list, generic names (e.g., \code{Mod1}, \code{Mod2}) are
+supplied in the table in the same order as in the list of candidate
+models.
 }
   \item{newdata}{
 a data frame with the same structure as that of the original data frame
 for which we want to make predictions.
 }
+\item{second.ord}{
+  logical.  If \code{TRUE}, the function returns the second-order
+  Akaike information criterion (i.e., AICc).
+}
+\item{nobs}{
+  this argument allows to specify a numeric value other than total
+  sample size to compute the AICc (i.e., \code{nobs} defaults to total
+  number of observations).  This is relevant only for mixed models or
+  various models of \code{unmarkedFit} classes where sample size is not
+  straightforward.  In such cases, one might use total number of
+  observations or number of independent clusters (e.g., sites) as the
+  value of \code{nobs}.
+}
+\item{uncond.se}{either, \code{old}, or \code{revised}, specifying the
+  equation used to compute the unconditional standard error of a
+  model-averaged estimate.  With \code{uncond.se = "old"},
+  computations are based on equation 4.9 of Burnham and Anderson
+  (2002), which was the former way to compute unconditional standard
+  errors.  With \code{uncond.se = "revised"}, equation 6.12 of Burnham
+  and Anderson (2002) is used.  Anderson (2008, p. 111) recommends use
+  of the revised version for the computation of unconditional standard
+  errors and it is now the default.  Note that versions of package
+  AICcmodavg < 1.04 used the old method to compute unconditional
+  standard errors.  
+}
   \item{type}{
-the scale of prediction requested, one of "response" or "link".  The
-latter is only relevant for 'glm', 'mer', and 'unmarkedFit' classes.
-Note that the value "terms" is not defined for 'modavgpred'.
+the scale of prediction requested, one of \code{response} or
+\code{link}.  The latter is only relevant for \code{glm}, \code{mer},
+and \code{unmarkedFit} classes.  Note that the value \code{terms} is not
+defined for \code{modavgPred}. 
 }
   \item{c.hat}{
 value of overdispersion parameter (i.e., variance inflation factor) such
-as that obtained from 'c_hat'.  Note that values of c.hat different from
-1 are only appropriate for binomial GLM's with trials > 1 (i.e.,
-success/trial or cbind(success, failure) syntax), with Poisson GLM's, 
-single-season occupancy models (MacKenzie et al. 2002), or
+as that obtained from \code{c_hat}.  Note that values of \code{c.hat}
+different from 1 are only appropriate for binomial GLM's with trials > 1
+(i.e., success/trial or cbind(success, failure) syntax), with Poisson
+GLM's, single-season occupancy models (MacKenzie et al. 2002), or
 \emph{N}-mixture models (Royle 2004, Dail and Madsen 2011).  If
-c.hat > 1, 'modavgpred' will return the quasi-likelihood analogue of the
-information criteria requested and multiply the variance-covariance
-matrix of the estimates by this value (i.e., SE's are multiplied by
-sqrt(c.hat)).  This option is not supported for generalized linear mixed
-models of the 'mer' class.
+\code{c.hat > 1}, \code{modavgPred} will return the quasi-likelihood
+analogue of the information criteria requested and multiply the
+variance-covariance matrix of the estimates by this value (i.e., SE's
+are multiplied by \code{sqrt(c.hat)}).  This option is not supported for
+generalized linear mixed models of the \code{mer} class.
 }
 \item{gamdisp}{
   the value of the gamma dispersion parameter.
 }
-\item{second.ord}{
-  logical.  If TRUE, the function returns the second-order
-  Akaike information criterion (i.e., AICc).
+\item{parm.type}{  this argument specifies the parameter type on which the effect size 
+  will be computed and is only relevant for models of
+  \code{unmarkedFitOccu}, \code{unmarkedFitColExt},
+  \code{unmarkedFitOccuFP}, \code{unmarkedFitOccuRN}, 
+  \code{unmarkedFitMPois}, \code{unmarkedFitPCount},
+  \code{unmarkedFitPCO}, \code{unmarkedFitDS}, \code{unmarkedFitGDS}, 
+  \code{unmarkedFitGMM}, and \code{unmarkedFitGPC} classes.  The
+  character strings supported vary with the type of model fitted. 
+  For \code{unmarkedFitOccu} objects, either \code{psi} or \code{detect}
+  can be supplied to indicate whether the parameter is on occupancy or
+  detectability, respectively.  For \code{unmarkedFitColExt}, possible
+  values  are \code{psi}, \code{gamma}, \code{epsilon}, and
+  \code{detect}, for parameters on occupancy in the inital year,
+  colonization, extinction, and detectability, respectively.  For
+  \code{unmarkedFitOccuFP} objects, one can specify \code{psi},
+  \code{detect}, or \code{fp}, for occupancy, detectability, and
+  probability of assigning false-positives, respectively.  For
+  \code{unmarkedFitOccuRN} objects, either \code{lambda} or
+  \code{detect} can be entered for abundance and detectability
+  parameters, respectively.  For \code{unmarkedFitPCount} and
+  \code{unmarkedFitMPois} objects, \code{lambda} or \code{detect} denote
+  parameters on abundance and detectability, respectively.  For
+  \code{unmarkedFitPCO} objects, one can enter \code{lambda},
+  \code{gamma}, \code{omega}, or \code{detect}, to specify parameters on
+  abundance, recruitment, apparent survival, and detectability,
+  respectively.  For \code{unmarkedFitDS} objects, only \code{lambda} is
+  supported for the moment.  For \code{unmarkedFitGDS}, \code{lambda}
+  and \code{phi} denote abundance and availability, respectively.  For  
+  \code{unmarkedFitGMM} and \code{unmarkedFitGPC} objects,
+  \code{lambda}, \code{phi}, and \code{detect} denote abundance, 
+  availability, and detectability, respectively. 
 }
-  \item{nobs}{
-  this argument allows to specify a numeric value other than total
-  sample size to compute the AICc (i.e., 'nobs' defaults to total number
-  of observations).  This is relevant only for mixed models or various
-  models of 'unmarkedFit' classes where sample size is not
-  straightforward.  In such cases, one might use total number of
-  observations or number of independent clusters (e.g., sites) as the
-  value of 'nobs'.
-}
-  \item{uncond.se}{either, "old", or "revised", specifying the equation
-used to compute the unconditional standard error of a model-averaged
-estimate.  With uncond.se = "old", computations are based on equation
-4.9 of Burnham and Anderson (2002), which was the former way to compute
-unconditional standard errors.  With uncond.se = "revised", equation
-6.12 of Burnham and Anderson (2002) is used.  Anderson (2008, p. 111)
-recommends use of the revised version for the computation of
-unconditional standard errors and it is now the default.  Note that
-versions of package AICcmodavg < 1.04 used the old method to compute
-unconditional standard errors. 
-}
-\item{parm.type}{
-  this argument specifies the parameter type on which the effect size 
-  will be computed and is only relevant for models of 'unmarkedFitOccu',
-  'unmarkedFitColExt', 'unmarkedFitOccuRN', 'unmarkedFitPCount',
-  'unmarkedFitPCO', 'unmarkedFitDS', 'unmarkedFitGDS', and
-  'unmarkedFitOccuFP' classes.  The character strings supported vary
-  with the type of model fitted.  For 'unmarkedFitOccu' objects, either
-  'psi' or 'detect' can be supplied to indicate whether the parameter is
-  on occupancy or detectability, respectively.  For 'unmarkedFitColExt',
-  possible values are 'psi', 'gamma', 'epsilon', and 'detect', for
-  parameters on occupancy in the inital year, colonization, extinction,
-  and detectability, respectively.  For 'unmarkedFitOccuRN' objects,
-  either 'lambda or 'detect' can be entered for abundance and
-  detectability parameters, respectively.  For 'unmarkedFitPCount'
-  objects, 'lambda' or 'detect' denote parameters on abundance and
-  detectability, respectively.  For 'unmarkedFitPCO' objects, one can
-  enter 'lambda', 'gamma', 'omega', or 'detect', to specify parameters
-  on abundance, recruitment, apparent survival, and detectability,
-  respectively. For 'unmarkedFitDS' and 'unmarkedFitGDS' objects, only
-  'lambda' is supported for the moment. For 'unmarkedFitOccuFP' objects,
-  one can specify 'psi', 'detect', or 'fp', for occupancy,
-  detectability, and probability of assigning false-positives,
-  respectively.
+\item{\dots}{
+  additional arguments passed to the function.
 }
 }
 
 \details{
-  'modavgpred' is a function that calls 'modavgpred.gls',
-  'modavgpred.glm', 'modavgpred.lme', 'modavgpred.mer',
-  'modavgpred.merMod', 'modavgpred.rlm', or 'modavgpred.unmarked'
-  depending on the class of the object.  The candidate models must be
-  stored in a list. Note that a data frame from which to make
-  predictions must be supplied with the 'newdata' argument and that all
-  variables appearing in the model set must appear in this data frame.
-  Variables must be of the same type as in the original analysis (e.g.,
-  factor, numeric).
+  The candidate models must be stored in a list. Note that a data frame
+  from which to make predictions must be supplied with the \code{newdata}
+  argument and that all variables appearing in the model set must appear
+  in this data frame.  Variables must be of the same type as in the
+  original analysis (e.g., factor, numeric).
   
   One can compute unconditional confidence intervals around the
-  predictions from the elements returned by 'modavgpred'.  The classic
-  computation based on asymptotic normality of the estimator is
-  appropriate to estimate confidence intervals of beta estimates (i.e.,
-  estimates on the linear predictor scale).  For predictions of some types
-  of response variables (e.g., discrete values such as counts, or binary
-  variables), the normal approximation may be inappropriate.  In such
-  cases, it is often better to compute the confidence intervals on the
-  linear predictor scale and then back-transform the limits to the scale
-  of the response variable.  Burnham and Anderson (2002, p. 164) suggest
-  alternative methods of computing unconditional confidence intervals for
-  small degrees of freedom with profile likelihood intervals or
-  bootstrapping.
+  predictions from the elements returned by \code{modavgPred}.  The
+  classic computation based on asymptotic normality of the estimator is
+  appropriate to estimate confidence intervals on the linear predictor
+  (i.e., link scale).  For predictions of some types of response
+  variables such as counts or binary variables, the normal approximation
+  may be inappropriate.  In such cases, it is often better to compute
+  the confidence intervals on the linear predictor scale and then
+  back-transform the limits to the scale of the response variable.
+  Burnham et al. (1987), Burnham and Anderson (2002, p. 164), and
+  Williams et al. (2002) suggest alternative methods of computing
+  confidence intervals for small degrees of freedom with profile
+  likelihood intervals or bootstrapping. 
 }
 \value{
-'modavgpred' returns an object of class 'modavgpred' with the
+\code{modavgPred} returns an object of class \code{modavgPred} with the 
 following components:
 \item{type}{
-  the scale of predicted values (response or link) for 'glm', 'mer',
-  'merMod', or 'unmarkedFit' classes.
+  the scale of predicted values (response or link) for \code{glm}, \code{mer},
+  \code{merMod}, or \code{unmarkedFit} classes.
 }
 \item{mod.avg.pred}{
   the model-averaged prediction over the entire candidate model set.
@@ -178,6 +254,11 @@ following components:
 \references{
 Anderson, D. R. (2008) \emph{Model-based Inference in the Life Sciences:
   a primer on evidence}. Springer: New York.
+
+Burnham, K. P., Anderson, D. R., White, G. C., Brownie, C., Pollock,
+K. H. (1987) Design and analysis methods for fish survival experiments
+based on release-recapture. \emph{American Fisheries Society Monographs}
+\bold{5}, 1--437.
 
 Burnham, K. P., Anderson, D. R. (2002) \emph{Model Selection and
   Multimodel Inference: a practical information-theoretic
@@ -195,6 +276,8 @@ detection probabilities are less than one. \emph{Ecology} \bold{83},
 Royle, J. A. (2004) \emph{N}-mixture models for estimating population
 size from spatially replicated counts. \emph{Biometrics} \bold{60},
 108--115.
+
+Williams, B. K., Nichols, J. D., Conroy, M. J. (2002) \emph{Analysis and management of animal populations}. Academic Press: New York.
 }
 \author{
 Marc J. Mazerolle
@@ -203,8 +286,8 @@ Marc J. Mazerolle
 \seealso{
 \code{\link{AICc}}, \code{\link{aictab}}, \code{\link{importance}},
 \code{\link{c_hat}}, \code{\link{confset}}, \code{\link{evidence}}, 
-\code{\link{modavg}}, \code{\link{modavg.effect}},
-\code{\link{modavg.shrink}}, \code{\link{predict}},
+\code{\link{modavg}}, \code{\link{modavgEffect}},
+\code{\link{modavgShrink}}, \code{\link{predict}},
 \code{\link{predict.glm}}, \code{\link{predictSE.gls}},
 \code{\link{predictSE.lme}}, \code{\link{predictSE.mer}} 
 }
@@ -242,12 +325,12 @@ new.dat <- data.frame(Shade = c(1, 1, 1),
                       Substrate = c("SOIL", "SPHAGNUM", "PEAT")) 
 
 ##compare unconditional SE's using both methods
-modavgpred(cand.set = Cand.models, modnames = Modnames,
+modavgPred(cand.set = Cand.models, modnames = Modnames,
            newdata = new.dat, type = "response", uncond.se = "old")
-modavgpred(cand.set = Cand.models, modnames = Modnames,
+modavgPred(cand.set = Cand.models, modnames = Modnames,
            newdata = new.dat, type = "response", uncond.se = "revised")
 ##round to 4 digits after decimal point
-print(modavgpred(cand.set = Cand.models, modnames = Modnames,
+print(modavgPred(cand.set = Cand.models, modnames = Modnames,
                  newdata = new.dat, type = "response",
                  uncond.se = "revised"), digits = 4)
 
@@ -278,21 +361,21 @@ Modnames <- paste("mod", 1:length(Cand), sep = "")
 
 ##compute model-averaged predictions on scale of response variable for
 ##all observations
-modavgpred(cand.set = Cand, modnames = Modnames, newdata = clotting,
+modavgPred(cand.set = Cand, modnames = Modnames, newdata = clotting,
            gamdisp = gamma.dispersion(clot1), type = "response") 
 
 ##compute model-averaged predictions on scale of linear predictor
-modavgpred(cand.set = Cand, modnames = Modnames, newdata = clotting,
+modavgPred(cand.set = Cand, modnames = Modnames, newdata = clotting,
            gamdisp = gamma.dispersion(clot1), type = "link")
 
 ##compute model-averaged predictions on scale of linear predictor
 \dontrun{
-modavgpred(cand.set = Cand, modnames = Modnames, newdata = clotting,
+modavgPred(cand.set = Cand, modnames = Modnames, newdata = clotting,
            gamdisp = gamma.dispersion(clot1), type = "terms") #returns an error
-##because type = "terms" is not defined for 'modavgpred'
+##because type = "terms" is not defined for 'modavgPred'
 }
 \dontrun{
-modavgpred(cand.set = Cand, modnames = Modnames, newdata = clotting,
+modavgPred(cand.set = Cand, modnames = Modnames, newdata = clotting,
            type = "terms") #returns an error because
 ##no gamma dispersion parameter was specified (i.e., 'gamdisp' missing) 
 }
@@ -320,13 +403,13 @@ Modnames <- c("length + forest", "elev + forest", "length + elev",
               "null")
 
 ##compute model-averaged predictions of abundance for values of elev
-modavgpred(cand.set = Cands, modnames = Modnames, newdata =
+modavgPred(cand.set = Cands, modnames = Modnames, newdata =
            data.frame(elev = seq(from = -1.4, to = 2.4, by = 0.1),
                       length = 0, forest = 0), parm.type = "lambda",
            type = "response")
 
 ##compute model-averaged predictions of detection for values of ivel
-modavgpred(cand.set = Cands, modnames = Modnames, newdata =
+modavgPred(cand.set = Cands, modnames = Modnames, newdata =
            data.frame(ivel = seq(from = -1.75, to = 5.9, by = 0.5),
                       date = 0), parm.type = "detect",
            type = "response")
@@ -360,7 +443,7 @@ Cands <- list(fm1, fm2, fm3)
 Modnames <- paste("mod", 1:length(Cands), sep = "")
 
 ##model-average predictions on abundance
-modavgpred(cand.set = Cands, modnames = Modnames, parm.type = "lambda", type = "link",
+modavgPred(cand.set = Cands, modnames = Modnames, parm.type = "lambda", type = "link",
            newdata = data.frame(area = mean(linetran$area), habitat = c("A", "B")))
 detach(package:unmarked)
 }
@@ -386,7 +469,7 @@ Modnames <- c("age effect", "null model")
 aictab(cand.set = Cand.models, modnames = Modnames)
 
 ##model-averaged predictions
-modavgpred(cand.set = Cand.models, modnames = Modnames, newdata =
+modavgPred(cand.set = Cand.models, modnames = Modnames, newdata =
 data.frame(age = c(8, 10, 12, 14)))
 detach(package:nlme)
 
